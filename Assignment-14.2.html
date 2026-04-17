@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Notification Banner</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  /* Banner styling */
+  .banner {
+    position: fixed;
+    top: -100px; /* hidden */
+    left: 0;
+    width: 100%;
+    background: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+    /* Smooth animation */
+    transition: top 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+  }
+
+  /* Visible state */
+  .banner.show {
+    top: 0;
+    opacity: 1;
+  }
+
+  /* Button */
+  button {
+    margin-top: 120px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  /* Close button */
+  .close-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- Notification Banner -->
+<div id="banner" class="banner">
+  ✅ Notification: Action completed successfully!
+  <span class="close-btn" onclick="hideBanner()">✖</span>
+</div>
+
+<!-- Trigger Button -->
+<button onclick="showBanner()">Show Notification</button>
+
+<script>
+  function showBanner() {
+    const banner = document.getElementById("banner");
+    banner.classList.add("show");
+
+    // Auto hide after 4 seconds
+    setTimeout(() => {
+      banner.classList.remove("show");
+    }, 4000);
+  }
+
+  function hideBanner() {
+    document.getElementById("banner").classList.remove("show");
+  }
+</script>
+
+</body>
+</html>
